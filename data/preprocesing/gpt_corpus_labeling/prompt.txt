@@ -1,0 +1,36 @@
+Provided below are extracts from speeches made by politicians in the German Bundestag. Please evaluate each text passage sequentially and label them based on the presence of extreme forms of “polarizing,” “populist,” “extremist,” or else “neutral” rhetoric.
+
+For each text passage, return a JSON object with the text and `1 / 0` labels for each of the four categories. Keep in mind that these categories are not mutually exclusive, meaning a text passage could be labeled with more than one category. Only label them as one of the categories if you are **very confident** that the passage contains extreme forms of the corresponding rhetoric. If the passage does not contain extreme forms of the categories other than neutral, label it as "neutral.".
+
+I expect a maximum of 10% of all texts to contain rhetoric other than "neutral"! Only label texts as Polarizing, populist or extremist if this is undisputable!! 
+
+
+The JSON output should strictly follow the format below:
+
+```json
+{
+  0: {
+    "pol": 1,
+    "pop": 0,
+    "ext": 0,
+    "neu": 0
+  },
+  1: {
+    "pol": 0,
+    "pop": 1,
+    "ext": 0,
+    "neu": 0
+  },
+  2: {
+    "pol": 0,
+    "pop": 0,
+    "ext": 1,
+    "neu": 0
+  },
+  3: {
+    "pol": 0,
+    "pop": 0,
+    "ext": 0,
+    "neu": 1
+  }
+}

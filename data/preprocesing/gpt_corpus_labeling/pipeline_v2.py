@@ -21,7 +21,7 @@ class Sentiment_Classifier:
             try:
                 # Send each full text (no batching) to GPT-4
                 response = self.client.chat.completions.create(
-                    model="gpt-4-turbo",
+                    model="gpt-4o",
                     messages=[
                         {
                             "role": "user",
@@ -49,7 +49,7 @@ class Sentiment_Classifier:
 
 if __name__ == '__main__':
     # Load the data and the prompt
-    data = pd.read_excel('/Users/benedikt/PycharmProjects/thesis_yufei/data/preprocesing/gpt_corpus_labeling/v1_500_sample.xlsx')
+    data = pd.read_excel('/Users/benedikt/PycharmProjects/thesis_yufei/data/preprocesing/gpt_corpus_labeling/validation_sample500_ep20.xlsx')
     prompt = open('/Users/benedikt/PycharmProjects/thesis_yufei/data/preprocesing/gpt_corpus_labeling/prompt.txt', 'r').read()
 
     # Instantiate the classifier with the data
@@ -109,4 +109,4 @@ if __name__ == '__main__':
 
     # Save each chunk into a separate Excel file
     for i, chunk in enumerate(data_chunks):
-        chunk.to_excel(f'{names[i]}_manual_pre_labeling_1510.xlsx', index=False)
+        chunk.to_excel(f'{names[i]}_04manual_pre_labeling_1610_validation.xlsx', index=False)

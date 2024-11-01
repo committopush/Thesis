@@ -1,5 +1,7 @@
 import python.src.od_lib.definitions.path_definitions as path_definitions
 from python.src.od_lib.helper_functions.progressbar import progressbar
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 import pandas as pd
 import regex
 import sys
@@ -16,6 +18,11 @@ president_pattern_str = r"(?P<position_raw>Präsident(?:in)?|Vizepräsident(?:in
 faction_speaker_pattern_str = r"{3}(?P<name_raw>[A-ZÄÖÜß][^:([{{}}\]\)\n]+?)(\s*{0}(?P<constituency>[^:(){{}}[\]\n]+){1})*\s*{0}(?P<position_raw>{2}){1}(\s*{0}(?P<constituency>[^:(){{}}[\]\n]+){1})*\s?:\s?"
 
 minister_pattern_str = r"{0}(?P<name_raw>[A-ZÄÖÜß](?:[^:([{{}}\]\)\s]+\s?){{1,5}}?),\s?(?P<position_raw>(?P<short_position>Bundesminister(?:in)?|Staatsminister(?:in)?|(?:Parl\s?\.\s)?Staatssekretär(?:in)?|Präsident(?:in)?|Bundeskanzler(?:in)?|Schriftführer(?:in)?|Senator(?:in)?\s?(?:{1}(?P<constituency>[^:([{{}}\]\)\s]+){2})?|Berichterstatter(?:in)?)\s?([^:([\]{{}}\)\n]{{0,76}}?\n?){{1,2}})\s?:\s?"
+
+top_pattern_str = r'(?:Zusatz(?:-| |\\n)?(?:tages(?:-| |\\n)?)?ordnung(?:-| |\\n)?(?:spunkt|spunkte)|Tages(?:-| |\\n)?ordnung(?:-| |\\n)?(?:spunkt|spunkte)|Zusatz(?:-| |\\n)?(?:punkt|punkte))\s*(\d+|[IVX]{1,3}|IV|IX)'
+
+# Define the regex pattern to match "punkt" and the digits after it
+punkt_regex = regex.compile(r'punkt (\d+|[IVX]{1,3}|IV|IX):', regex.IGNORECASE)
 
 parties = [
     r"(?:Gast|-)?(?:\s*C\s*[DSMU]\s*S?[DU]\s*(?:\s*[/,':!.-]?)*\s*(?:\s*C+\s*[DSs]?\s*[UÙ]?\s*)?)(?:-?Hosp\.|-Gast|1)?",
@@ -42,7 +49,7 @@ parties = [
     "NR",
 ]
 
-print("Starting..")
+print("Starting...")
 
 # Walk over all legislature periods. ___________________________________________
 for folder_path in sorted(RAW_TXT.iterdir()):
@@ -54,10 +61,12 @@ for folder_path in sorted(RAW_TXT.iterdir()):
         continue
     term_number = int(term_number.group(0))
 
-    if term_number <= 10:
-        open_brackets = r"[({\[]"
-        close_brackets = r"[)}\]]"
-        prefix = r"(?<=\n)"
+    if term_number <15:
+        continue
+    # if term_number <= 10:
+    #     open_brackets = r"[({\[]"
+    #     close_brackets = r"[)}\]]"
+    #     prefix = r"(?<=\n)"
     elif 10 < term_number <= 18:
         open_brackets = r"[(]"
         close_brackets = r"[)]"
@@ -69,6 +78,7 @@ for folder_path in sorted(RAW_TXT.iterdir()):
         if str(term_number) not in sys.argv:
             continue
 
+    top_pattern = regex.compile(top_pattern_str)
     faction_speaker_pattern = regex.compile(
         faction_speaker_pattern_str.format(
             open_brackets, close_brackets, "|".join(parties), prefix
@@ -109,6 +119,14 @@ for folder_path in sorted(RAW_TXT.iterdir()):
         with open(session / "session_content.txt") as file:
             session_content = file.read()
 
+        # If toc.txt file exists, open it
+        toc_file_path = session / "toc.txt"
+        if toc_file_path.exists():
+            with open(toc_file_path) as toc_file:
+                toc_content = toc_file.read()
+        else:
+            toc_content = ""
+
         # Placeholders for the information of a speaker.
         session_list = []
         speaker_name = []
@@ -117,6 +135,11 @@ for folder_path in sorted(RAW_TXT.iterdir()):
         speaker_span_begin = []  # Character position beginning of match
         speaker_span_end = []  # Character position ending of match
         speech_content = []
+        top_title = []
+
+        # List to store agenda items and their positions
+        top_items = []
+        top_positions = []
 
         # Search all parts where one of the patterns is matching.
         for pattern in patterns:
@@ -131,6 +154,11 @@ for folder_path in sorted(RAW_TXT.iterdir()):
                 spans = match.span()
                 speaker_span_begin.append(spans[0])
                 speaker_span_end.append(spans[1])
+
+        # Search for all agenda items in the session content
+        for match in regex.finditer(top_pattern, session_content):
+            top_items.append(match.group(0))
+            top_positions.append(match.start())
 
         # Sort the speeches in the text.
         session_df["session"] = session_list
@@ -152,4 +180,55 @@ for folder_path in sorted(RAW_TXT.iterdir()):
 
         session_df["speech_content"] = speech_content
 
+        # Determine the closest preceding agenda item for each speech.
+        top_item_list = []
+
+        for speech_begin in session_df["span_begin"]:
+            closest_agenda_index = -1
+            for i, agenda_position in enumerate(top_positions):
+                if agenda_position < speech_begin:
+                    closest_agenda_index = i
+                else:
+                    break
+            if closest_agenda_index != -1:
+                top_item_list.append(top_items[closest_agenda_index])
+            else:
+                top_item_list.append(None)  # No agenda item found
+
+        # Add the agenda item information to the DataFrame
+        session_df["top_item"] = top_item_list
+
+        # Extract top_title from toc.txt based on the top_item
+        for top_item in top_item_list:
+            if top_item is None:
+                top_title.append(None)
+                continue
+
+            # Use fuzzy matching to find the closest match for top_item in toc_content
+            best_match, best_score = process.extractOne(top_item,
+                                                        toc_content.splitlines(),
+                                                        scorer=fuzz.partial_ratio)
+
+            # Set a threshold for accepting a match (e.g., score > 80)
+            if best_score > 50:
+                top_match = regex.search(regex.escape(best_match), toc_content)
+                if top_match:
+                    start_pos = top_match.end()
+                    next_top_match = regex.search(top_pattern,
+                                                  toc_content[start_pos:])
+                    if next_top_match:
+                        end_pos = start_pos + next_top_match.start()
+                    else:
+                        end_pos = len(toc_content)
+                    top_title.append(toc_content[start_pos:end_pos].strip())
+                else:
+                    top_title.append(None)
+            else:
+                top_title.append(None)
+
+        session_df["top_title"] = top_title
+
         session_df.to_pickle(save_path / (session.stem + ".pkl"))
+
+
+

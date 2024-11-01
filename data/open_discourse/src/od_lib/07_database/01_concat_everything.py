@@ -47,7 +47,9 @@ speech_content_01_18 = speech_content_01_18.loc[
         "position_short",
         "position_long",
         "politician_id",
-        "speech_content",
+        "top_item",
+        "top_title",
+        "speech_content"
     ],
 ]
 
@@ -137,6 +139,8 @@ speech_content_19 = speech_content_19.loc[
         "position_long",
         "politician_id",
         "speech_content",
+        "top_item",
+        "top_title",
         "date",
     ],
 ]
@@ -152,6 +156,8 @@ speech_content_20 = speech_content_20.loc[
         "position_long",
         "politician_id",
         "speech_content",
+        "top_item",
+        "top_title",
         "date",
     ],
 ]
@@ -193,6 +199,10 @@ speech_content_20["session"] = speech_content_20["session"].astype("int32")
 
 speech_content = pd.concat([speech_content_01_18, speech_content_19, speech_content_20])
 
+speech_content.speech_content = speech_content.speech_content.replace('\u00A0', ' ', regex=True)
+speech_content.speech_content = speech_content.speech_content.replace('\u00AD', ' ', regex=True)
+speech_content.speech_content = speech_content.speech_content.replace('\(\{\d+\}\)', '', regex=True)
+speech_content.speech_content = speech_content.speech_content.str.strip()
 # save data.
 
 speech_content.to_pickle(SPEECH_CONTENT_OUTPUT / "speech_content.pkl")

@@ -122,6 +122,27 @@ def get_faction_abbrev(faction, faction_patterns):
     return None
 
 
+def extract_toc_content(xml_content, tagesordnungspunkt_title):
+    root = xml_content.getroot()
+
+    # Find the correct <ivz-block> with the given tagesordnungspunkt title
+    tagesordnungspunkt_block = None
+    for ivz_block in root.findall(".//ivz-block"):
+        title = ivz_block.find("ivz-block-titel")
+        if title is not None and title.text.strip() == tagesordnungspunkt_title + ":":
+            tagesordnungspunkt_block = ivz_block
+            break
+
+    # Concatenate all <ivz-eintrag-inhalt> under this block
+    concatenated_text = ""
+    if tagesordnungspunkt_block is not None:
+        for eintrag in tagesordnungspunkt_block.findall(
+            ".//ivz-eintrag/ivz-eintrag-inhalt"):
+            if eintrag.text:
+                concatenated_text += eintrag.text.strip() + " "
+
+    return concatenated_text.strip()
+
 speech_content_id = 1000000
 
 speech_content = pd.DataFrame(
@@ -184,6 +205,7 @@ for folder_path in sorted(ELECTORAL_TERM_19_20_INPUT.iterdir()):
 
         session_content = et.parse(session_path / "session_content.xml")
         meta_data = et.parse(session_path / "meta_data.xml")
+        toc = et.parse(session_path / "toc.xml")
 
         date = meta_data.getroot().get("sitzung-datum")
         # Wrong date in xml file. Fixing manually
@@ -200,7 +222,10 @@ for folder_path in sorted(ELECTORAL_TERM_19_20_INPUT.iterdir()):
         id_Counter = 0
 
         for top in tops:
+            top_item = top.get("top-id")
             speeches = top.findall("rede")
+            top_title = extract_toc_content(toc, top_item)
+
             for speech in speeches:
                 speaker = speech[0].find("redner")
                 if speaker is None:
@@ -257,6 +282,8 @@ for folder_path in sorted(ELECTORAL_TERM_19_20_INPUT.iterdir()):
                                 "politician_id": speaker_id,
                                 "speech_content": speech_text,
                                 "date": date,
+                                "top_item": top_item,
+                                "top_title": top_title
                             }
                         )
                         speech_content_id += 1
@@ -300,6 +327,8 @@ for folder_path in sorted(ELECTORAL_TERM_19_20_INPUT.iterdir()):
                                 "politician_id": speaker_id,
                                 "speech_content": speech_text,
                                 "date": date,
+                                "top_item": top_item,
+                                "top_title": top_title
                             }
                         )
 
@@ -379,6 +408,8 @@ for folder_path in sorted(ELECTORAL_TERM_19_20_INPUT.iterdir()):
                         "politician_id": speaker_id,
                         "speech_content": speech_text,
                         "date": date,
+                        "top_item": top_item,
+                        "top_title": top_title
                     }
                 )
                 speech_content_id += 1
@@ -391,6 +422,7 @@ for folder_path in sorted(ELECTORAL_TERM_19_20_INPUT.iterdir()):
     speech_content = pd.DataFrame.from_records(speech_records)
 
     speech_content.to_pickle(term_spoken_content / "speech_content.pkl")
+    print(term_spoken_content)
 
     contributions_simplified = pd.concat(contributions_simplified, sort=False)
     contributions_simplified.to_pickle(

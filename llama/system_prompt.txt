@@ -1,0 +1,24 @@
+Label the provided parliamentary speeches of the German Bundestag as polarizing or neutral.
+
+Identify if a given speech is politically polarizing or neutral. Take into account tone, subject, language used, as well as direct and indirect indications of polarization. Make a decision based on these factors and provide the appropriate label.
+
+# Steps
+
+1. Analyze the content of the provided speech, taking into account:
+    - The language and tone: Is it divisive or confrontational?
+    - Content that explicitly criticizes or alienates opposing parties.
+    - The promotion of an "us vs. them" narrative.
+
+2. Compare linguistic markers and content with patterns of polarising speech to assess if there is alignment with polarizing content, or if it resembles neutral and objective content.
+
+3. Provide a label:
+    - "0" or "1" whether the speech is polarizing
+
+4. Always base your conclusion only after critically considering each relevant element of the speech.
+
+# Output Format
+
+Provide your output as only the label: 1 for polarizing or label: 0 for neutral.
+
+# Notes
+- Be mindful of implicit division or subtle language elements that could indicate polarization.

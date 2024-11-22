@@ -50,10 +50,15 @@ coverage.*
 dist/
 build/
 
-# Jupyter Notebook metadata
-*.ipynb~
-*.nbconvert.ipynb
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
 
-# macOS Finder files
-._*
-Thumbs.db
+# Pickle files
+*.pickle
+*.pkl

@@ -1,1 +1,60 @@
-# thesis_yufei
+# Thesis Project: Analyzing Polarizing Language in the German Bundestag
+
+### Overview
+
+This repository contains the code and resources for our thesis, which focuses on analyzing polarization in the speeches of the German Bundestag. We aim to detect, evaluate and analyse polarizing language through sentiment analysis, structural analysis, and fine-tuned transformer models.
+
+---
+### Key Components
+
+1. **Data Processing Pipelines**  
+   The repository includes robust pipelines for ingesting, cleaning, and preprocessing all speeches provided by the german bundestag, leveraging the open discourse project.
+
+2. **Analyses**  
+   - Sentiment analysis leveraging dictionaries and a bag-of-words approach.
+   - Structural analysis to identify patterns and trends in speech interruptions, reactions, and debate types.
+
+3. **Fine-Tuned Transformer Models**  
+   - **BERT, GPT 4o Mini and LLAMA 3.1 8B Instruct**: LLMs trained to detect polarizing language in Bundestag speeches based on our manually labelled corpus.
+
+4. **Model Comparison**  
+   Provides a comparative analysis of the different transformer models implemented, highlighting their varying effectiveness in identifying polarization individually and as an ensemble.
+
+---
+
+### Repository Structure
+
+#### 1. **`analyses/`**
+   - Contains Jupyter Notebooks for key analyses:
+     - **Polarization_Term_20_Analysis.ipynb**: Analysis specific to the 20th electoral term.
+     - **Sentiment Analysis.ipynb**: Detailed Analysis of speech sentiment.
+     - **Structural_Analysis_v3.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs and such.
+   
+#### 2. **`data/`**
+   - Contains scripts for scraping raw data from the bundestag API, scripts for data extraction, preprocessing, cleaning and exploratory data analysis
+     - **`import/`**: (?) @Bene
+     - **`open_discourse/`**: API calling and XML parsers for data ingestion, preprocessing and cleaning pipelines for data transformation. Leans heavily on the open discourse project.
+     - **`postprocessing_speeches/`**: (?) @Bene
+     - **`preprocessing/`**: Scripts for manual and automated data labeling.
+
+#### 3. **`model_comparison/`**
+   - Evaluation notebooks and data comparing fine-tuned transformer models:
+     - **BERTval.xlsx, GPTval.xlsx, LLAMAval.csv**: Validation set output of the fine-tuned transformer models.
+     - **Model_Comparison.ipynb**: Comprehensive analysis and comparison of model results.
+
+#### 4. **`sentiment/`**
+   - Resources for sentiment analysis:
+     - **sent_dictionary_1.csv**: Sentiment dictionary as taken from [SOURCE]
+     - **sent_dictionary_2.csv**: Sentiment dictionary as taken from [SOURCE]
+     - **sentiment_score_calculation.ipynb**: Implementation of sentiment score calculations.
+
+#### 5. **`topic_modelling/`**
+   - Includes tools for topic modeling:
+     - **topic_list.csv**: Topics and associated words with weights identified from speeches
+     - **topic_modelling.ipynb**: Implementation of topic modeling using LDA.
+
+#### 6. **`transformer_models/`**
+   - Contains implementation and fine-tuning of transformer models:
+     - **BERT/**
+     - **GPT/**
+     - **LLAMA/**

@@ -5,6 +5,22 @@
 This repository contains the code and resources for our thesis, which focuses on analyzing polarization in the speeches of the German Bundestag. We aim to detect, evaluate and analyse polarizing language through sentiment analysis, structural analysis, and fine-tuned transformer models.
 
 ---
+### Key Components
+
+1. **Data Processing Pipelines**  
+   The repository includes robust pipelines for ingesting, cleaning, and preprocessing all speeches provided by the german bundestag, leveraging the open discourse project.
+
+2. **Analyses**  
+   - Sentiment analysis leveraging dictionaries and a bag-of-words approach.
+   - Structural analysis to identify patterns and trends in speech interruptions, reactions, and debate types.
+
+3. **Fine-Tuned Transformer Models**  
+   - **BERT, GPT 4o Mini and LLAMA 3.1 8B Instruct**: LLMs trained to detect polarizing language in Bundestag speeches based on our manually labelled corpus.
+
+4. **Model Comparison**  
+   Provides a comparative analysis of the different transformer models implemented, highlighting their varying effectiveness in identifying polarization individually and as an ensemble.
+
+---
 
 ### Repository Structure
 
@@ -42,20 +58,3 @@ This repository contains the code and resources for our thesis, which focuses on
      - **BERT/**
      - **GPT/**
      - **LLAMA/**
-
----
-
-### Key Components
-
-1. **Data Processing Pipelines**  
-   The repository includes robust pipelines for ingesting, cleaning, and preprocessing all speeches provided by the german bundestag, leveraging the open discourse project.
-
-2. **Sentiment and Structural Analysis**  
-   - Sentiment analysis leveraging dictionaries and a bag-of-words approach.
-   - Structural analysis to identify patterns and trends in speech interruptions, reactions, and debate types.
-
-3. **Fine-Tuned Transformer Models**  
-   - **BERT, GPT 4o Mini and LLAMA 3.1 8B Instruct**: LLMs trained to detect polarizing language in Bundestag speeches based on our manually labelled corpus.
-
-4. **Model Comparison**  
-   Provides a comparative analysis of the different transformer models implemented, highlighting their varying effectiveness in identifying polarization individually and as an ensemble.

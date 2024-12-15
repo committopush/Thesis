@@ -10,15 +10,16 @@ This repository contains the code and resources for our thesis, which focuses on
 1. **Data Processing Pipelines**  
    The repository includes robust pipelines for ingesting, cleaning, and preprocessing all speeches provided by the german bundestag, leveraging the open discourse project.
 
-2. **Analyses**  
+2. **Analyses**
+   - Analysis of electoral terms 17-20, as well as electoral term 20 in-depth.
    - Sentiment analysis leveraging dictionaries and a bag-of-words approach.
    - Structural analysis to identify patterns and trends in speech interruptions, reactions, and debate types.
 
-3. **Fine-Tuned Transformer Models**  
-   - **BERT, GPT 4o Mini and LLAMA 3.1 8B Instruct**: LLMs trained to detect polarizing language in Bundestag speeches based on our manually labelled corpus.
+4. **Fine-Tuned Transformer Models**  
+   - **BERT, GPT 4o Mini and LLAMA 3.1 8B Instruct**: LLMs fine-tuned to detect polarizing language in Bundestag speeches based on our manually labelled corpus.
 
-4. **Model Comparison**  
-   Provides a comparative analysis of the different transformer models implemented, highlighting their varying effectiveness in identifying polarization individually and as an ensemble.
+5. **Model Comparison**  
+   Provides a comparative analysis of the different transformer models implemented, highlighting their varying effectiveness in identifying polarization individually and using different ensemble approaches.
 
 ---
 

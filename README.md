@@ -41,9 +41,8 @@ This repository contains the code and resources for our thesis, which focuses on
    
 #### 2. **`data/`**
    - Contains scripts for scraping raw data from the bundestag API, scripts for data extraction, preprocessing, cleaning and exploratory data analysis
-     - **`import/`**: (?) @Bene
      - **`open_discourse/`**: API calling and XML parsers for data ingestion, preprocessing and cleaning pipelines for data transformation. Leans heavily on the open discourse project.
-     - **`postprocessing_speeches/`**: (?) @Bene
+     - **`postprocessing_speeches/`**: Collecting corpus statistics and corpus paraphrasing.
      - **`preprocessing/`**: Scripts for manual and automated data labeling.
      - **05-staedte.xlsx**: Dataset taken from [Statistisches Bundesamt (2022)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/05-staedte.xlsx%3F__blob%3DpublicationFile&ved=2ahUKEwil9bGMtvyJAxXjdqQEHWLjDCEQFnoECBgQAQ&usg=AOvVaw3ILEGrnP35OHGg-QmAaTmb) to map birthplaces of politicians for data enrichment.
      - **Data_Cleaning.ipynb** Data cleaning and exploratory data analysis.

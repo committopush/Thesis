@@ -36,7 +36,7 @@ This repository contains the code and resources for our thesis, which focuses on
      - **RQ1_Developments.ipynb**: Analysis of electoral terms 17-20.
      - **RQ2_Electoral_Term_20.ipynb**: Analysis specific to the 20th electoral term.
      - **Sentiment_Analysis.ipynb**: Detailed Analysis of speech sentiment.
-     - **Structural_Analysis.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs and such.
+     - **Structural_Analysis.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs.
    
    
 #### 2. **`data/`**

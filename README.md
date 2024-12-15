@@ -26,10 +26,10 @@ This repository contains the code and resources for our thesis, which focuses on
 
 #### 1. **`analyses/`**
    - Contains Jupyter Notebooks for key analyses:
-     - **Sentiment_Analysis.ipynb**: Detailed Analysis of speech sentiment.
-     - **Structural_Analysis.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs and such.
      - **RQ1_Developments.ipynb**: Analysis of electoral terms 17-20.
      - **RQ2_Electoral_Term_20.ipynb**: Analysis specific to the 20th electoral term.
+     - **Sentiment_Analysis.ipynb**: Detailed Analysis of speech sentiment.
+     - **Structural_Analysis.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs and such.
    
    
 #### 2. **`data/`**
@@ -38,6 +38,9 @@ This repository contains the code and resources for our thesis, which focuses on
      - **`open_discourse/`**: API calling and XML parsers for data ingestion, preprocessing and cleaning pipelines for data transformation. Leans heavily on the open discourse project.
      - **`postprocessing_speeches/`**: (?) @Bene
      - **`preprocessing/`**: Scripts for manual and automated data labeling.
+     - **05-staedte.xlsx**: Dataset taken from [Statistisches Bundesamt (2022)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/05-staedte.xlsx%3F__blob%3DpublicationFile&ved=2ahUKEwil9bGMtvyJAxXjdqQEHWLjDCEQFnoECBgQAQ&usg=AOvVaw3ILEGrnP35OHGg-QmAaTmb) to map birthplaces of politicians to the former FRG or GDR.
+     - **Data_Cleaning_v4.ipynb** Data cleaning and exploratory data analysis.
+     - **Master_Dataframe.ipynb** Data integration for further analysis
 
 #### 3. **`model_comparison/`**
    - Evaluation notebooks and data comparing fine-tuned transformer models:

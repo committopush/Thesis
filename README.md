@@ -61,7 +61,7 @@ This repository contains the code and resources for our thesis, which focuses on
      - **sentiment_score_calculation.ipynb**: Implementation of sentiment score calculations.
 
 #### 5. **`topic_modelling/`**
-   - Includes tools for topic modeling:
+   - Includes resources for topic modeling:
      - **topic_list.csv**: Topics and associated words with weights identified from speeches.
      - **topic_modelling.ipynb**: Implementation of topic modeling using LDA.
 

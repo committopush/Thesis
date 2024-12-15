@@ -26,9 +26,11 @@ This repository contains the code and resources for our thesis, which focuses on
 
 #### 1. **`analyses/`**
    - Contains Jupyter Notebooks for key analyses:
-     - **Polarization_Term_20_Analysis.ipynb**: Analysis specific to the 20th electoral term.
-     - **Sentiment Analysis.ipynb**: Detailed Analysis of speech sentiment.
-     - **Structural_Analysis_v3.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs and such.
+     - **Sentiment_Analysis.ipynb**: Detailed Analysis of speech sentiment.
+     - **Structural_Analysis.ipynb**: Analysis of structural aspects of different kinds of bundestag debates, interruptions, reactions captured by the stenographs and such.
+     - **RQ1_Developments.ipynb**: Analysis of electoral terms 17-20.
+     - **RQ2_Electoral_Term_20.ipynb**: Analysis specific to the 20th electoral term.
+   
    
 #### 2. **`data/`**
    - Contains scripts for scraping raw data from the bundestag API, scripts for data extraction, preprocessing, cleaning and exploratory data analysis
@@ -44,7 +46,7 @@ This repository contains the code and resources for our thesis, which focuses on
 
 #### 4. **`sentiment/`**
    - Resources for sentiment analysis:
-     - **sent_dictionary_1.csv**: Sentiment dictionary as taken from [SOURCE]
+     - **sent_dictionary_1.csv**: Sentiment dictionary as taken from [Rauh (2018)](https://www.tandfonline.com/doi/full/10.1080/19331681.2018.1485608)
      - **sent_dictionary_2.csv**: Sentiment dictionary as taken from [SOURCE]
      - **sentiment_score_calculation.ipynb**: Implementation of sentiment score calculations.
 

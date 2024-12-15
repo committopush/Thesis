@@ -55,6 +55,6 @@ This repository contains the code and resources for our thesis, which focuses on
 
 #### 6. **`transformer_models/`**
    - Contains implementation and fine-tuning of transformer models:
-     - **BERT/**
-     - **GPT/**
-     - **LLAMA/**
+     - **`BERT/`**
+     - **`GPT/`**
+     - **`LLAMA/`**

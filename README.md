@@ -4,6 +4,12 @@
 
 This repository contains the code and resources for our thesis, which focuses on analyzing polarization in the speeches of the German Bundestag. We aim to detect, evaluate and analyse polarizing language through sentiment analysis, structural analysis, and fine-tuned transformer models.
 
+#### Contributors
+- [Anna Amenda](mailto:52267@novasbe.pt)
+- [Silja Bienert](mailto:58250@novasbe.pt)
+- [Antonius Greiner](mailto:58544@novasbe.pt)
+- [Benedikt Gros](mailto:60508@novasbe.pt)
+- [Antonie Thomas](mailto:59117@novasbe.pt)
 ---
 ### Key Components
 

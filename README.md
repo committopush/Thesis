@@ -38,9 +38,9 @@ This repository contains the code and resources for our thesis, which focuses on
      - **`open_discourse/`**: API calling and XML parsers for data ingestion, preprocessing and cleaning pipelines for data transformation. Leans heavily on the open discourse project.
      - **`postprocessing_speeches/`**: (?) @Bene
      - **`preprocessing/`**: Scripts for manual and automated data labeling.
-     - **05-staedte.xlsx**: Dataset taken from [Statistisches Bundesamt (2022)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/05-staedte.xlsx%3F__blob%3DpublicationFile&ved=2ahUKEwil9bGMtvyJAxXjdqQEHWLjDCEQFnoECBgQAQ&usg=AOvVaw3ILEGrnP35OHGg-QmAaTmb) to map birthplaces of politicians to the former FRG or GDR.
+     - **05-staedte.xlsx**: Dataset taken from [Statistisches Bundesamt (2022)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/05-staedte.xlsx%3F__blob%3DpublicationFile&ved=2ahUKEwil9bGMtvyJAxXjdqQEHWLjDCEQFnoECBgQAQ&usg=AOvVaw3ILEGrnP35OHGg-QmAaTmb) to map birthplaces of politicians for data enrichment.
      - **Data_Cleaning_v4.ipynb** Data cleaning and exploratory data analysis.
-     - **Master_Dataframe.ipynb** Data integration for further analysis
+     - **Master_Dataframe.ipynb** Data integration for further analysis.
 
 #### 3. **`model_comparison/`**
    - Evaluation notebooks and data comparing fine-tuned transformer models:
@@ -55,7 +55,7 @@ This repository contains the code and resources for our thesis, which focuses on
 
 #### 5. **`topic_modelling/`**
    - Includes tools for topic modeling:
-     - **topic_list.csv**: Topics and associated words with weights identified from speeches
+     - **topic_list.csv**: Topics and associated words with weights identified from speeches.
      - **topic_modelling.ipynb**: Implementation of topic modeling using LDA.
 
 #### 6. **`transformer_models/`**

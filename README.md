@@ -46,7 +46,7 @@ This repository contains the code and resources for our thesis, which focuses on
      - **`postprocessing_speeches/`**: (?) @Bene
      - **`preprocessing/`**: Scripts for manual and automated data labeling.
      - **05-staedte.xlsx**: Dataset taken from [Statistisches Bundesamt (2022)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/05-staedte.xlsx%3F__blob%3DpublicationFile&ved=2ahUKEwil9bGMtvyJAxXjdqQEHWLjDCEQFnoECBgQAQ&usg=AOvVaw3ILEGrnP35OHGg-QmAaTmb) to map birthplaces of politicians for data enrichment.
-     - **Data_Cleaning_v4.ipynb** Data cleaning and exploratory data analysis.
+     - **Data_Cleaning.ipynb** Data cleaning and exploratory data analysis.
      - **Master_Dataframe.ipynb** Data integration for further analysis.
 
 #### 3. **`model_comparison/`**

@@ -46,8 +46,8 @@ This repository contains the code and resources for our thesis, which focuses on
 
 #### 4. **`sentiment/`**
    - Resources for sentiment analysis:
-     - **sent_dictionary_1.csv**: Sentiment dictionary as taken from [Rauh (2018)](https://www.tandfonline.com/doi/full/10.1080/19331681.2018.1485608)
-     - **sent_dictionary_2.csv**: Sentiment dictionary as taken from [SOURCE]
+     - **sent_dictionary_1.csv**: Sentiment dictionary as taken from [Haselmayer et al. (2017)](http://link.springer.com/article/10.1007%2Fs11135-016-0412-4)
+     - **sent_dictionary_2.csv**: Sentiment dictionary as taken from [Rauh (2018)](https://www.tandfonline.com/doi/full/10.1080/19331681.2018.1485608)
      - **sentiment_score_calculation.ipynb**: Implementation of sentiment score calculations.
 
 #### 5. **`topic_modelling/`**

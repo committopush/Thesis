@@ -63,3 +63,4 @@ This repository contains the code and resources for our thesis, which focuses on
      - **`BERT/`**
      - **`GPT/`**
      - **`LLAMA/`**
+     - **Tokenization.ipynb**: Notebook to segment longer speeches for model ingestion.

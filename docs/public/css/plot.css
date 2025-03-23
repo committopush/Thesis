@@ -1,0 +1,83 @@
+.full-width-plot {
+  width: calc(100vw - 8rem);
+  max-width: calc(100vw - 8rem);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  min-height: 500px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f7f7f7;
+  border-top: 1px solid #eaeaea;
+  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+  max-width: 100%;
+  margin: 0;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.profile-details h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  color: inherit;
+}
+
+.profile-details p {
+  font-size: 1rem;
+  margin: 0.25rem 0 1rem;
+  color: inherit;
+}
+
+.profile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+.profile-links li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.profile-links a {
+  text-decoration: none;
+  color: #2a7ae2;
+}
+
+.profile-links a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure no excess space below */
+body {
+  margin-bottom: 0 !important;
+}
+
+.profile-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+}

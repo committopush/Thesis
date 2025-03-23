@@ -1,0 +1,21 @@
+# Setup
+title:               EXAMINING POLITICAL POLARIZATION IN THE GERMAN BUNDESTAG USING LLMs
+tagline:             'HISTORICAL TRENDS AND A CONTEMPORARY ANALYSIS'
+description:         'Welcome to my thesis project, developed as part of the Master of Science in Business Analytics at NOVA SBE.'
+url:                 https://committopush.github.io
+baseurl:             '/thesis'
+paginate:            5
+permalink:           pretty
+
+github:
+  repo:              https://github.com/committopush/thesis
+
+contact:
+  webpage:           https://committopush.github.io
+
+# Gems
+plugins:
+  - jekyll-paginate
+
+# Custom vars
+version:             1.0.0
